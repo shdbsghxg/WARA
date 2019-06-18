@@ -23,10 +23,10 @@ public class LoginActivity extends Activity {
 
     private static String TAG = "phpquerytest";
 
-    private static final String TAG_JSON="webnautes";
-    private static final String TAG_ID = "id";
-    private static final String TAG_NAME = "name";
-    private static final String TAG_ADDRESS ="country";
+//    private static final String TAG_JSON="webnautes";
+//    private static final String TAG_ID = "id";
+//    private static final String TAG_NAME = "name";
+//    private static final String TAG_ADDRESS ="country";
 
     private TextView mTextViewResult;
     EditText mEditTextSearchKeyword1, mEditTextSearchKeyword2;
