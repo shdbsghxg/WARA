@@ -39,7 +39,7 @@ public class SignupActivity extends Activity {
 
         mEditTextName = (EditText)findViewById(R.id.editText_main_name);
         mEditTextCountry = (EditText)findViewById(R.id.editText_main_country);
-//        mTextViewResult = (TextView)findViewById(R.id.textView_main_result);
+        mTextViewResult = (TextView)findViewById(R.id.textView_main_result);
 
         mTextViewResult.setMovementMethod(new ScrollingMovementMethod());
 

@@ -21,8 +21,8 @@
 
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:tools="http://schemas.android.com/tools"
-            android:layout_weight="2"
             android:gravity="center"
+            android:layout_weight="2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
@@ -53,12 +53,17 @@
                 android:id="@+id/editText_main_country" />
 
             <Button
-                android:background="@drawable/shape2"
+                android:background="@drawable/round_border_grey"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="sign up"
                 android:id="@+id/button_main_insert" />
 
+            <TextView
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:id="@+id/textView_main_result" />
 
         </LinearLayout>
 

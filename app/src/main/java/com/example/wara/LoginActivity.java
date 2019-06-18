@@ -38,7 +38,7 @@ public class LoginActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-//        mTextViewResult = (TextView)findViewById(R.id.header);
+        mTextViewResult = (TextView)findViewById(R.id.header);
         mEditTextSearchKeyword1 = (EditText) findViewById(R.id.idInput);
         mEditTextSearchKeyword2 = (EditText) findViewById(R.id.pwInput);
 
@@ -46,7 +46,6 @@ public class LoginActivity extends Activity {
         Button loginBtn= (Button) findViewById(R.id.login);
         loginBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-
                 GetData task = new GetData();
                 task.execute( mEditTextSearchKeyword1.getText().toString(), mEditTextSearchKeyword2.getText().toString());
             }
