@@ -87,8 +87,8 @@ public class LoginActivity extends Activity {
 
             if (result.equals("logged in")){
                 Toast.makeText(getApplicationContext(), result.toString(), Toast.LENGTH_SHORT).show();
-//                Intent intent = new Intent(getApplicationContext(), StatusActivity.class);
-//                startActivity(intent);
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(intent);
 
 //                mTextViewResult.setText(errorString);
             }
