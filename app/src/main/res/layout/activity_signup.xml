@@ -6,50 +6,70 @@
     android:layout_height="match_parent"
     tools:context=".SignupActivity">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:gravity="center"
+    <LinearLayout
+        android:background="#f5e4f7"
+        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        tools:context=".LoginActivity">
+        android:layout_height="match_parent">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="id"
-            android:id="@+id/textView_main_name" />
-
-        <EditText
-            android:layout_marginBottom="20dp"
+        <LinearLayout
+            android:layout_weight="8"
+            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/editText_main_name" />
+            android:layout_height="match_parent"></LinearLayout>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="password"
-            android:id="@+id/textView_main_country" />
 
-        <EditText
-            android:layout_marginBottom="20dp"
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_weight="2"
+            android:gravity="center"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/editText_main_country" />
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            tools:context=".LoginActivity">
 
-        <Button
-            android:background="@drawable/round_border_grey"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="sign up"
-            android:id="@+id/button_main_insert" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="id"
+                android:id="@+id/textView_main_name" />
 
-        <TextView
+            <EditText
+                android:layout_marginBottom="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/editText_main_name" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="password"
+                android:id="@+id/textView_main_country" />
+
+            <EditText
+                android:layout_marginBottom="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/editText_main_country" />
+
+            <Button
+                android:background="@drawable/shape2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="sign up"
+                android:id="@+id/button_main_insert" />
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_weight="8"
+            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="250dp"
-            android:id="@+id/textView_main_result" />
+            android:layout_height="match_parent"></LinearLayout>
 
     </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

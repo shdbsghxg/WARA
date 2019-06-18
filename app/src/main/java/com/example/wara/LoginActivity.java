@@ -38,7 +38,7 @@ public class LoginActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        mTextViewResult = (TextView)findViewById(R.id.header);
+//        mTextViewResult = (TextView)findViewById(R.id.header);
         mEditTextSearchKeyword1 = (EditText) findViewById(R.id.idInput);
         mEditTextSearchKeyword2 = (EditText) findViewById(R.id.pwInput);
 

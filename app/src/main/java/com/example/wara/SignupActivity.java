@@ -39,7 +39,7 @@ public class SignupActivity extends Activity {
 
         mEditTextName = (EditText)findViewById(R.id.editText_main_name);
         mEditTextCountry = (EditText)findViewById(R.id.editText_main_country);
-        mTextViewResult = (TextView)findViewById(R.id.textView_main_result);
+//        mTextViewResult = (TextView)findViewById(R.id.textView_main_result);
 
         mTextViewResult.setMovementMethod(new ScrollingMovementMethod());
 
@@ -53,7 +53,7 @@ public class SignupActivity extends Activity {
                 String password = mEditTextCountry.getText().toString();
 
                 InsertData task = new InsertData();
-                task.execute("http://" + IP_ADDRESS + "/insert.php", id,password);
+                task.execute("http://" + IP_ADDRESS + "/signup.php", id,password);
 
 
                 mEditTextName.setText("");

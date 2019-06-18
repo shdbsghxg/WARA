@@ -7,26 +7,24 @@
     tools:context=".LoginActivity">
 
     <LinearLayout
+        android:background="#f5e4f7"
         android:gravity="center"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <LinearLayout
-            android:background="#004499CC"
+            android:gravity="center"
             android:layout_weight="3"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-            <TextView
-                android:id="@+id/header"
-                android:textSize="30dp"
-                android:layout_gravity="bottom"
-                android:gravity="center"
-                android:layout_marginBottom="20dp"
-                android:text="close the window"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+            <ImageView
+                android:layout_height="200dp"
+                android:layout_width="300dp"
+                android:src="@drawable/wara_logo"
+                />
         </LinearLayout>
+
 
         <GridLayout
             android:layout_weight="3"
@@ -39,7 +37,6 @@
 
             <LinearLayout
                 android:layout_marginBottom="15dp"
-                android:background="@drawable/round_border_grey"
                 android:layout_row="0"
                 android:layout_column="1"
                 android:layout_columnSpan="8"
@@ -48,12 +45,6 @@
                 android:layout_columnWeight="8"
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent">
-
-                <ImageView
-                    android:layout_height="wrap_content"
-                    android:layout_width="wrap_content"
-                    android:src="@drawable/user"
-                    android:scaleType="centerCrop"/>
                 <EditText
                     android:id="@+id/idInput"
                     android:layout_height="wrap_content"
@@ -63,7 +54,6 @@
 
             <LinearLayout
                 android:layout_marginBottom="15dp"
-                android:background="@drawable/round_border_grey"
                 android:layout_row="1"
                 android:layout_column="1"
                 android:layout_columnSpan="8"
@@ -72,12 +62,6 @@
                 android:layout_columnWeight="8"
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent">
-
-                <ImageView
-                    android:layout_height="wrap_content"
-                    android:layout_width="wrap_content"
-                    android:src="@drawable/login"
-                    android:scaleType="centerInside"/>
                 <EditText
                     android:id="@+id/pwInput"
                     android:layout_height="wrap_content"
@@ -86,8 +70,8 @@
                     android:hint="password"/>
             </LinearLayout>
             <Button
+                android:background="@drawable/shape2"
                 android:id="@+id/login"
-                android:background="@drawable/round_border_grey"
                 android:text="login"
                 android:layout_columnWeight="8"
                 android:layout_gravity="fill_horizontal"
@@ -95,6 +79,7 @@
                 android:layout_column="1"
                 android:layout_row="2"/>
             <CheckBox
+                android:layout_marginTop="20dp"
                 android:id="@+id/autoLogin"
                 android:text="   login on start"
                 android:layout_columnWeight="8"
@@ -105,10 +90,11 @@
 
         </GridLayout>
 
+
         <RelativeLayout
             android:gravity="center_horizontal"
             android:background="#0033BB33"
-            android:layout_weight="3"
+            android:layout_weight="4"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <TextView
