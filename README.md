@@ -1,2 +1,2 @@
 # android
-development state of WARA project
+WARA project
