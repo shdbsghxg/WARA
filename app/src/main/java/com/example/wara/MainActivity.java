@@ -13,6 +13,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.view.KeyEvent;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
 import android.widget.TextView;
@@ -25,7 +26,7 @@ public class MainActivity extends AppCompatActivity implements AddUser.OnFragmen
     private Category category;
     private Destination destination;
     private Messanger messanger;
-
+    private BottomNavigationView navView;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -35,18 +36,22 @@ public class MainActivity extends AppCompatActivity implements AddUser.OnFragmen
             switch (item.getItemId()) {
                 case R.id.add_user:
                     switchFragment(0);
+//                    setCheckable(navView, true, 0);
 //                    mTextMessage.setText(R.string.title_home);
                     return true;
                 case R.id.category:
                     switchFragment(1);
+//                    setCheckable(navView, true, 1);
 //                    mTextMessage.setText(R.string.title_dashboard);
                     return true;
                 case R.id.meet_place:
                     switchFragment(2);
+//                    setCheckable(navView, true, 2);
 //                    mTextMessage.setText(R.string.title_dashboard);
                     return true;
                 case R.id.link_messenger:
                     switchFragment(3);
+//                    setCheckable(navView, true, 3);
 //                    mTextMessage.setText(R.string.title_notifications);
                     return true;
             }
@@ -54,6 +59,10 @@ public class MainActivity extends AppCompatActivity implements AddUser.OnFragmen
         }
     };
 
+//    public static void setCheckable(BottomNavigationView view, boolean checkable, int fragmentNum) {
+//        final Menu menu = view.getMenu();
+//        menu.getItem(fragmentNum).setCheckable(checkable);
+//    }
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
@@ -66,6 +75,12 @@ public class MainActivity extends AppCompatActivity implements AddUser.OnFragmen
                 fragmentTransaction.remove(destination);
                 fragmentTransaction.remove(messanger);
                 fragmentTransaction.commit();
+//                setCheckable(navView, false, 0);
+//                setCheckable(navView, false, 1);
+//                setCheckable(navView, false, 2);
+//                setCheckable(navView, false, 3);
+//                invalidateOptionsMenu();
+
                 break;
             case KeyEvent.KEYCODE_VOLUME_DOWN :
                 break;
@@ -76,7 +91,6 @@ public class MainActivity extends AppCompatActivity implements AddUser.OnFragmen
         }
         return false;
     }
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,8 +107,8 @@ public class MainActivity extends AppCompatActivity implements AddUser.OnFragmen
         TMapView tMapView = new TMapView(this);
         tMapView.setSKTMapApiKey( "9419da98-d84c-436d-97c8-a5216f6b0922" );
         frameTmap.addView( tMapView );
-
-        BottomNavigationView navView = findViewById(R.id.nav_view);
+        navView = findViewById(R.id.nav_view);
+//        BottomNavigationView navView = findViewById(R.id.nav_view);
         mTextMessage = findViewById(R.id.message);
         navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 

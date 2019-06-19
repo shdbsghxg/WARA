@@ -10,13 +10,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-
 import java.io.BufferedReader;
-
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
-
 import java.net.HttpURLConnection;
 import java.net.URL;
 
@@ -39,9 +36,7 @@ public class SignupActivity extends Activity {
         mEditTextName = (EditText)findViewById(R.id.editText_main_name);
         mEditTextCountry = (EditText)findViewById(R.id.editText_main_country);
         mTextViewResult = (TextView)findViewById(R.id.textView_main_result);
-
         mTextViewResult.setMovementMethod(new ScrollingMovementMethod());
-
 
         Button buttonInsert = (Button)findViewById(R.id.button_main_insert);
         buttonInsert.setOnClickListener(new View.OnClickListener() {
@@ -53,7 +48,6 @@ public class SignupActivity extends Activity {
 
                 InsertData task = new InsertData();
                 task.execute("http://" + IP_ADDRESS + "/signup.php", id,password);
-
 
                 mEditTextName.setText("");
                 mEditTextCountry.setText("");
@@ -80,8 +74,6 @@ public class SignupActivity extends Activity {
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
 
-
-
             progressDialog.dismiss();
             mTextViewResult.setText(result);
             Log.d(TAG, "POST response  - " + result);
@@ -97,24 +89,20 @@ public class SignupActivity extends Activity {
             String serverURL = (String)params[0];
             String postParameters = "id=" + id + "&password=" + password;
 
-
             try {
 
                 URL url = new URL(serverURL);
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
-
 
                 httpURLConnection.setReadTimeout(5000);
                 httpURLConnection.setConnectTimeout(5000);
                 httpURLConnection.setRequestMethod("POST");
                 httpURLConnection.connect();
 
-
                 OutputStream outputStream = httpURLConnection.getOutputStream();
                 outputStream.write(postParameters.getBytes("UTF-8"));
                 outputStream.flush();
                 outputStream.close();
-
 
                 int responseStatusCode = httpURLConnection.getResponseCode();
                 Log.d(TAG, "POST response code - " + responseStatusCode);
