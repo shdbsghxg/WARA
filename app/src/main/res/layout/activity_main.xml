@@ -9,11 +9,21 @@
 
 
     <FrameLayout
-        android:id="@+id/frameMap"
+        android:id="@+id/fragFrame"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
     </FrameLayout>
+
+
+    <!--<fragment-->
+        <!--android:id="@+id/fragMap"-->
+        <!--android:name="com.example.wara.FragmentAddUserUser"-->
+        <!--tools:layout="@layout/activity_main"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"/>-->
+
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/nav_view"
         android:layout_width="0dp"
