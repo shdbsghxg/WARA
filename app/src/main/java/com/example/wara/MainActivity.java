@@ -15,8 +15,11 @@ import androidx.fragment.app.FragmentTransaction;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.TextView;
+
+import net.daum.mf.map.api.MapView;
 
 public class MainActivity extends AppCompatActivity implements AddUser.OnFragmentInteractionListener, Category.OnFragmentInteractionListener,
         Destination.OnFragmentInteractionListener, Messanger.OnFragmentInteractionListener {
@@ -104,9 +107,15 @@ public class MainActivity extends AppCompatActivity implements AddUser.OnFragmen
 
         FrameLayout frameTmap = (FrameLayout)findViewById(R.id.fragFrame);
 
-        TMapView tMapView = new TMapView(this);
-        tMapView.setSKTMapApiKey( "9419da98-d84c-436d-97c8-a5216f6b0922" );
-        frameTmap.addView( tMapView );
+//        TMapView tMapView = new TMapView(this);
+//        tMapView.setSKTMapApiKey( "9419da98-d84c-436d-97c8-a5216f6b0922" );
+//        frameTmap.addView( tMapView );
+
+        MapView mapView = new MapView(this);
+
+        ViewGroup mapViewContainer = (ViewGroup) findViewById(R.id.fragFrame);
+        mapViewContainer.addView(mapView);
+
         navView = findViewById(R.id.nav_view);
 //        BottomNavigationView navView = findViewById(R.id.nav_view);
         mTextMessage = findViewById(R.id.message);
