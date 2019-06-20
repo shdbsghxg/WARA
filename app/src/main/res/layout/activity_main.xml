@@ -17,6 +17,11 @@
     </FrameLayout>
 
 
+    <LinearLayout
+        android:orientation="vertical"
+        android:id="@+id/temp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></LinearLayout>
     <!--<fragment-->
         <!--android:id="@+id/fragMap"-->
         <!--android:name="com.example.wara.FragmentAddUserUser"-->

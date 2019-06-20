@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+
+        android:layout_width="250dp"
+        android:layout_height="100dp"
+        android:background="#0ff0f0"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+            <ToggleButton
+                android:layout_alignParentLeft="true"
+                android:textOn="SELECT ALL"
+                android:textOff="SELECT NONE"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal">
+            <ToggleButton
+                android:background="@drawable/toggle_restaurant"
+                android:textOn=""
+                android:textOff=""
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                />
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="#ffffff"/>
+            <ToggleButton
+                android:textOn="ON"
+                android:textOff="OFF"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="Cancel"
+                />
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="#ffffff"/>
+            <ToggleButton
+                android:textOn="ON"
+                android:textOff="OFF"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="Cancel"
+                />
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="#ffffff"/>
+            <ToggleButton
+                android:textOn="ON"
+                android:textOff="OFF"
+                android:id="@+id/Ok"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="Cancel"
+                />
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="#ffffff"/>
+            <ToggleButton
+                android:textOn="ON"
+                android:textOff="OFF"
+                android:id="@+id/Cancel"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="Cancel"
+                />
+        </LinearLayout>
+
+
+
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -44,7 +44,7 @@ public class LoginActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-
+        /*Hash key getter for Daum Map API*/
 //        try {
 //            PackageInfo info = getPackageManager().getPackageInfo("com.example.wara", PackageManager.GET_SIGNATURES);
 //            for (Signature signature : info.signatures) {

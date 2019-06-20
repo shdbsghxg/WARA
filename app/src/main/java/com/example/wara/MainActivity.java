@@ -4,19 +4,21 @@ import android.net.Uri;
 import android.os.Bundle;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.skt.Tmap.TMapTapi;
-import com.skt.Tmap.TMapView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.view.Gravity;
 import android.view.KeyEvent;
-import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import net.daum.mf.map.api.MapView;
@@ -30,6 +32,8 @@ public class MainActivity extends AppCompatActivity implements AddUser.OnFragmen
     private Destination destination;
     private Messanger messanger;
     private BottomNavigationView navView;
+    private Button categoryBtn;
+    private PopupWindow popupWindow;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -39,22 +43,41 @@ public class MainActivity extends AppCompatActivity implements AddUser.OnFragmen
             switch (item.getItemId()) {
                 case R.id.add_user:
                     switchFragment(0);
-//                    setCheckable(navView, true, 0);
 //                    mTextMessage.setText(R.string.title_home);
                     return true;
                 case R.id.category:
-                    switchFragment(1);
-//                    setCheckable(navView, true, 1);
+                    View popupView = getLayoutInflater().inflate(R.layout.popup_category, null);
+                    popupWindow = new PopupWindow(popupView, LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+                    popupWindow.setFocusable(true);
+                    popupWindow.showAtLocation(popupView, Gravity.CENTER_VERTICAL, 0, 0);
+
+
+//                    ImageButton ok = (ImageButton) popupView.findViewById(R.id.Ok);
+//                    ok.setOnClickListener(new View.OnClickListener() {
+//                        @Override
+//                        public void onClick(View v) {
+//                            Toast.makeText(getApplicationContext(), "Ok", Toast.LENGTH_SHORT).show();
+//                        }
+//                    });
+//
+//                    ImageButton cancel = (ImageButton) popupView.findViewById(R.id.Cancel);
+//                    cancel.setOnClickListener(new View.OnClickListener() {
+//                        @Override
+//                        public void onClick(View v) {
+//                            popupWindow.dismiss();
+//                        }
+//                    });
+
+
+//                    switchFragment(1);
 //                    mTextMessage.setText(R.string.title_dashboard);
                     return true;
                 case R.id.meet_place:
                     switchFragment(2);
-//                    setCheckable(navView, true, 2);
 //                    mTextMessage.setText(R.string.title_dashboard);
                     return true;
                 case R.id.link_messenger:
                     switchFragment(3);
-//                    setCheckable(navView, true, 3);
 //                    mTextMessage.setText(R.string.title_notifications);
                     return true;
             }
@@ -62,10 +85,6 @@ public class MainActivity extends AppCompatActivity implements AddUser.OnFragmen
         }
     };
 
-//    public static void setCheckable(BottomNavigationView view, boolean checkable, int fragmentNum) {
-//        final Menu menu = view.getMenu();
-//        menu.getItem(fragmentNum).setCheckable(checkable);
-//    }
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
@@ -78,11 +97,6 @@ public class MainActivity extends AppCompatActivity implements AddUser.OnFragmen
                 fragmentTransaction.remove(destination);
                 fragmentTransaction.remove(messanger);
                 fragmentTransaction.commit();
-//                setCheckable(navView, false, 0);
-//                setCheckable(navView, false, 1);
-//                setCheckable(navView, false, 2);
-//                setCheckable(navView, false, 3);
-//                invalidateOptionsMenu();
 
                 break;
             case KeyEvent.KEYCODE_VOLUME_DOWN :
@@ -107,19 +121,21 @@ public class MainActivity extends AppCompatActivity implements AddUser.OnFragmen
 
         FrameLayout frameTmap = (FrameLayout)findViewById(R.id.fragFrame);
 
+        /*Tmap API*/
 //        TMapView tMapView = new TMapView(this);
 //        tMapView.setSKTMapApiKey( "9419da98-d84c-436d-97c8-a5216f6b0922" );
 //        frameTmap.addView( tMapView );
 
+        /*Daum Map API*/
         MapView mapView = new MapView(this);
-
         ViewGroup mapViewContainer = (ViewGroup) findViewById(R.id.fragFrame);
         mapViewContainer.addView(mapView);
 
         navView = findViewById(R.id.nav_view);
-//        BottomNavigationView navView = findViewById(R.id.nav_view);
+        BottomNavigationView navView = findViewById(R.id.nav_view);
         mTextMessage = findViewById(R.id.message);
         navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+
 
     }
 
