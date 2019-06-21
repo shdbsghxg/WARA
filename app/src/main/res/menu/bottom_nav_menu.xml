@@ -13,7 +13,7 @@
         android:title="category" />
 
     <item
-        android:id="@+id/meet_place"
+        android:id="@+id/destination"
         android:icon="@drawable/target"
         android:title="find" />
 

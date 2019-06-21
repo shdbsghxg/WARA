@@ -25,9 +25,11 @@ import java.net.URL;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
+
 public class LoginActivity extends Activity {
 
     private static String TAG = "phpquerytest";
+    private static boolean loginStatus;
 
 //    private static final String TAG_JSON="webnautes";
 //    private static final String TAG_ID = "id";
@@ -69,6 +71,7 @@ public class LoginActivity extends Activity {
             public void onClick(View v) {
                 GetData task = new GetData();
                 task.execute( mEditTextSearchKeyword1.getText().toString(), mEditTextSearchKeyword2.getText().toString());
+//                loginStatus = true;
             }
         });
 

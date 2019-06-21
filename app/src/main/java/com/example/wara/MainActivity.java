@@ -4,6 +4,7 @@ import android.net.Uri;
 import android.os.Bundle;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.skt.Tmap.TMapView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.annotation.NonNull;
@@ -32,17 +33,24 @@ public class MainActivity extends AppCompatActivity implements AddUser.OnFragmen
     private Destination destination;
     private Messanger messanger;
     private BottomNavigationView navView;
-    private Button categoryBtn;
     private PopupWindow popupWindow;
+    private FragmentManager fragmentManager = getSupportFragmentManager();
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
+
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
             switch (item.getItemId()) {
                 case R.id.add_user:
-                    switchFragment(0);
+                    if(addUser.isVisible()) {
+                        fragmentTransaction.remove(addUser);
+                        fragmentTransaction.commit();
+                    }else{
+                        switchFragment(0);
+                    }
 //                    mTextMessage.setText(R.string.title_home);
                     return true;
                 case R.id.category:
@@ -72,12 +80,22 @@ public class MainActivity extends AppCompatActivity implements AddUser.OnFragmen
 //                    switchFragment(1);
 //                    mTextMessage.setText(R.string.title_dashboard);
                     return true;
-                case R.id.meet_place:
-                    switchFragment(2);
+                case R.id.destination:
+                    if(destination.isVisible()) {
+                        fragmentTransaction.remove(destination);
+                        fragmentTransaction.commit();
+                    }else{
+                        switchFragment(2);
+                    }
 //                    mTextMessage.setText(R.string.title_dashboard);
                     return true;
                 case R.id.link_messenger:
-                    switchFragment(3);
+                    if(messanger.isVisible()) {
+                        fragmentTransaction.remove(messanger);
+                        fragmentTransaction.commit();
+                    }else{
+                        switchFragment(3);
+                    }
 //                    mTextMessage.setText(R.string.title_notifications);
                     return true;
             }
@@ -88,7 +106,6 @@ public class MainActivity extends AppCompatActivity implements AddUser.OnFragmen
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         switch(keyCode){
             case KeyEvent.KEYCODE_BACK :
@@ -97,7 +114,6 @@ public class MainActivity extends AppCompatActivity implements AddUser.OnFragmen
                 fragmentTransaction.remove(destination);
                 fragmentTransaction.remove(messanger);
                 fragmentTransaction.commit();
-
                 break;
             case KeyEvent.KEYCODE_VOLUME_DOWN :
                 break;
@@ -122,14 +138,14 @@ public class MainActivity extends AppCompatActivity implements AddUser.OnFragmen
         FrameLayout frameTmap = (FrameLayout)findViewById(R.id.fragFrame);
 
         /*Tmap API*/
-//        TMapView tMapView = new TMapView(this);
-//        tMapView.setSKTMapApiKey( "9419da98-d84c-436d-97c8-a5216f6b0922" );
-//        frameTmap.addView( tMapView );
+        TMapView tMapView = new TMapView(this);
+        tMapView.setSKTMapApiKey( "9419da98-d84c-436d-97c8-a5216f6b0922" );
+        frameTmap.addView( tMapView );
 
         /*Daum Map API*/
-        MapView mapView = new MapView(this);
-        ViewGroup mapViewContainer = (ViewGroup) findViewById(R.id.fragFrame);
-        mapViewContainer.addView(mapView);
+//        MapView mapView = new MapView(this);
+//        ViewGroup mapViewContainer = (ViewGroup) findViewById(R.id.fragFrame);
+//        mapViewContainer.addView(mapView);
 
         navView = findViewById(R.id.nav_view);
         BottomNavigationView navView = findViewById(R.id.nav_view);
@@ -141,7 +157,6 @@ public class MainActivity extends AppCompatActivity implements AddUser.OnFragmen
 
 
     protected void switchFragment(int fragmentNum){
-        FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         switch (fragmentNum){
             case 0 :
