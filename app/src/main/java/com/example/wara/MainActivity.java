@@ -1,9 +1,14 @@
 package com.example.wara;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Rect;
 import android.net.Uri;
 import android.os.Bundle;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.skt.Tmap.TMapMarkerItem;
+import com.skt.Tmap.TMapPoint;
 import com.skt.Tmap.TMapView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,14 +20,10 @@ import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
-
-import net.daum.mf.map.api.MapView;
 
 public class MainActivity extends AppCompatActivity implements AddUser.OnFragmentInteractionListener, Category.OnFragmentInteractionListener,
         Destination.OnFragmentInteractionListener, Messanger.OnFragmentInteractionListener {
@@ -35,6 +36,28 @@ public class MainActivity extends AppCompatActivity implements AddUser.OnFragmen
     private BottomNavigationView navView;
     private PopupWindow popupWindow;
     private FragmentManager fragmentManager = getSupportFragmentManager();
+
+
+    public static Rect locateView(View v)
+    {
+        int[] loc_int = new int[2];
+        if (v == null) return null;
+        try
+        {
+            v.getLocationOnScreen(loc_int);
+        } catch (NullPointerException npe)
+        {
+            //Happens when the view doesn't exist on screen anymore.
+            return null;
+        }
+        Rect location = new Rect();
+        location.left = loc_int[0];
+        location.top = loc_int[1];
+        location.right = location.left + v.getWidth();
+        location.bottom = location.top + v.getHeight();
+        return location;
+    }
+
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -57,7 +80,8 @@ public class MainActivity extends AppCompatActivity implements AddUser.OnFragmen
                     View popupView = getLayoutInflater().inflate(R.layout.popup_category, null);
                     popupWindow = new PopupWindow(popupView, LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
                     popupWindow.setFocusable(true);
-                    popupWindow.showAtLocation(popupView, Gravity.CENTER_VERTICAL, 0, 0);
+
+                    popupWindow.showAtLocation(popupView, Gravity.CENTER, 0, 0);
 
 
 //                    ImageButton ok = (ImageButton) popupView.findViewById(R.id.Ok);
@@ -140,7 +164,59 @@ public class MainActivity extends AppCompatActivity implements AddUser.OnFragmen
         /*Tmap API*/
         TMapView tMapView = new TMapView(this);
         tMapView.setSKTMapApiKey( "9419da98-d84c-436d-97c8-a5216f6b0922" );
+        tMapView.setLocationPoint(127.121272, 37.385810);
         frameTmap.addView( tMapView );
+
+//        TMapPoint mapPoint1 = tMapView.getLocationPoint();
+//        double latitude = mapPoint1.getLatitude();
+//        double longitude = mapPoint1.getLongitude();
+        double totLatitude = 0;
+        double avgLatitude = 0;
+        double totLongitude = 0;
+        double avgLongitude = 0;
+        int personCount = 3;
+        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.marker);
+        Bitmap bitmapCenter = BitmapFactory.decodeResource(getResources(), R.drawable.marker_center);
+
+        for(int i=0; i<personCount; i++){
+            double latitude = Math.random() + 37;
+            double longitude = Math.random() + 127;
+            totLatitude += latitude;
+            totLongitude += longitude;
+
+            TMapPoint mapPoint = new TMapPoint(latitude, longitude);
+            TMapMarkerItem marker = new TMapMarkerItem();
+            marker.setIcon(bitmap); // 마커 아이콘 지정
+            marker.setPosition(0.5f, 1.0f); // 마커의 중심점을 중앙, 하단으로 설정
+            marker.setTMapPoint( mapPoint); // 마커의 좌표 지정
+            marker.setName("MARKER" + i); // 마커의 타이틀 지정
+            tMapView.addMarkerItem("marker"+i, marker); // 지도에 마커 추가
+
+            if(i==(personCount-1)) {
+                avgLatitude = totLatitude / personCount;
+                avgLongitude= totLongitude/ personCount;
+                TMapPoint mapPointCenter = new TMapPoint(avgLatitude, avgLongitude);
+                TMapMarkerItem markerCenter = new TMapMarkerItem();
+                markerCenter.setIcon(bitmapCenter); // 마커 아이콘 지정
+                markerCenter.setPosition(0.5f, 1.0f); // 마커의 중심점을 중앙, 하단으로 설정
+                markerCenter.setTMapPoint( mapPointCenter); // 마커의 좌표 지정
+                markerCenter.setName("CENTER" + i); // 마커의 타이틀 지정
+                tMapView.addMarkerItem("markerCenter", markerCenter); // 지도에 마커 추가
+
+                tMapView.setCenterPoint( avgLongitude, avgLatitude );
+            }
+
+        }
+
+//        TMapMarkerItem marker1 = new TMapMarkerItem();
+//            marker1.setIcon(bitmap); // 마커 아이콘 지정
+//            marker1.setPosition(0.5f, 1.0f); // 마커의 중심점을 중앙, 하단으로 설정
+//            marker1.setTMapPoint( mapPoint1); // 마커의 좌표 지정
+//            marker1.setName("SKT타워"); // 마커의 타이틀 지정
+
+//        tMapView.addMarkerItem("markerItem1", marker1); // 지도에 마커 추가
+//        tMapView.setCenterPoint( longitude, latitude );
+
 
         /*Daum Map API*/
 //        MapView mapView = new MapView(this);
